@@ -7,7 +7,7 @@ function loadStudents() {
         const data = fs.readFileSync(filePath);
         return JSON.parse(data);
     } catch (err) {
-        console.log("⚠️ Error reading data. Resetting file...");
+        console.log("  Error reading data. Resetting file...");
         return [];
     }
 }
@@ -21,19 +21,19 @@ const command = args[0];
 if (command === "add") {
     const [name, age, city] = args.slice(1);
     if (!name || !age || !city) {
-        console.log("❌ Usage: node studentManager.js add <name> <age> <city>");
+        console.log("  Usage: node studentManager.js add <name> <age> <city>");
         process.exit(1);
     }
 
     const students = loadStudents();
     if (students.some(s => s.name.toLowerCase() === name.toLowerCase())) {
-        console.log(`❌ Student '${name}' already exists.`);
+        console.log(`Student '${name}' already exists.`);
         process.exit(1);
     }
 
     students.push({ name, age: Number(age), city });
     saveStudents(students);
-    console.log(`✅ Student '${name}' added successfully.`);
+    console.log(`Student '${name}' added successfully.`);
 }
 
 else if (command === "list") {
@@ -54,7 +54,7 @@ else if (command === "search") {
     const students = loadStudents();
     const found = students.find(s => s.name.toLowerCase() === name.toLowerCase());
     if (found) {
-        console.log("✅ Student found:");
+        console.log(" Student found:");
         console.table([found]);
     } else {
         console.log(`No student found with name '${name}'.`);
