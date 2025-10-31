@@ -1,4 +1,0 @@
-[
-    // Path to JSON file
-const filePath = "students.json";
-]
