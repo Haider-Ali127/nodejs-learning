@@ -1,24 +1,24 @@
 const express = require('express');
-const APP = express();
-const port = 3000;
-APP.get('/welcome', (req, res) => {
+const app = express();
+const PORT = 3000;
+app.get('/welcome', (req, res) => {
     res.json({
-        message: "Welcome to  api"
+        message: "Welcome to API"
     });
 });
-APP.get('/greet', (req, res) => {
+app.get('/greet', (req, res) => {
     const name = req.query.name || "Guest";
     res.json({
         message: `Hello ${name}`
     });
 });
-APP.get('/student/:name', (req, res) => {
+app.get('/student/:name', (req, res) => {
     const studentName = req.params.name;
     res.json({
         student: studentName,
         status: "Record fetched successfully"
     });
 });
-APPp.listen(port, () => {
+app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
